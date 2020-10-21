@@ -1,7 +1,12 @@
 from .product_page import ProductPage
+import pytest
 
-def test_guest_can_add_product_to_basket(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+xlink=7
+links = [f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{str(i)}" for i in range(10) if i!=7]
+links.insert(7,pytest.param(f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{xlink}",marks=pytest.mark.xfail))
+
+@pytest.mark.parametrize('link',links)
+def test_guest_can_add_product_to_basket(browser,link):
     page = ProductPage(browser,link)
     page.open()
     page.should_be_basket_botton()
