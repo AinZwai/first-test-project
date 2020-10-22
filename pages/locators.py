@@ -1,5 +1,9 @@
 from selenium.webdriver.common.by import By
 
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_ick") #добавляем неправельный селектор чтобы проверить что тест работает корректно
+
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR,"#login_link")
 
