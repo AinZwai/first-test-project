@@ -13,3 +13,4 @@ class ProductPageLocators():
     NAME_ADD_PRODUCT = (By.CSS_SELECTOR,".alert-success strong")
     PRICE_PRODUCT = (By.CSS_SELECTOR,".product_main p.price_color")
     PRICE_ADD_PRODUCT = (By.CSS_SELECTOR,".alert-info strong")
+    SUCCESS_MESSAGE = (By.CLASS_NAME, "alert-success")

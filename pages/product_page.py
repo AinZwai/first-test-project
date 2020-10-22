@@ -11,7 +11,7 @@ class ProductPage(BasePage):
         self.check_name_product_in_basket()
         self.check_price_add_in_basket()
 
-    def should_be_basket_botton(self):
+    def should_be_basket_botton_and_click(self):
         assert self.is_element_present(*ProductPageLocators.BASKET_BOTTON), "not found basket botton"
         self.browser.find_element(*ProductPageLocators.BASKET_BOTTON).click()
 
@@ -38,3 +38,9 @@ class ProductPage(BasePage):
         price_add = self.browser.find_element(*ProductPageLocators.PRICE_ADD_PRODUCT)
         print(f'price = {price.text}, price add = {price_add.text}')
         assert price.text == price_add.text, f'Цена товара не соответствует добавлнной цене в корзину'
+
+    def should_not_be_success_message(self):
+        assert self.in_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "see success message"
+
+    def message_disappeared_after_add_product(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "time is out, but can see message"
